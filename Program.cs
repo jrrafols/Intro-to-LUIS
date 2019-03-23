@@ -10,7 +10,6 @@ namespace Example1
     {
         private static readonly HttpClient _httpClient = new HttpClient();
 
-        private static readonly string APPLICATION_KEY = ConfigurationManager.AppSettings["MicrosoftLuisAppKey"];
         private static readonly string AUTHORING_KEY = ConfigurationManager.AppSettings["MicrosoftLuisAuthoringKey"];
         private static readonly string APPLICATION_ID = ConfigurationManager.AppSettings["MicrosoftLuisAppId"];
         private static readonly string VERSION = "0.1";
@@ -25,7 +24,7 @@ namespace Example1
             //var intents = MakeRequest<List<Intent>>(getIntentsPath, string.Empty);
 
             //Send an Utterance to determine the Intent and Entities
-            var sendQueryPath = $"luis/v2.0/apps/{APPLICATION_ID}?subscription-key={APPLICATION_KEY}&q=";
+            var sendQueryPath = $"luis/v2.0/apps/{APPLICATION_ID}?subscription-key={AUTHORING_KEY}&q=";
 
             var query = Console.ReadLine();
             var queryResponse = MakeRequest<QueryResponse>(sendQueryPath, query);
